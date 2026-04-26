@@ -4,82 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sticker Profile Board</title>
-    <style>
-        :root {
-            --board-width: 500px;
-            --board-height: 500px;
-        }
+   <style>
+    :root {
+        --board-width: 500px;
+        /* Removed fixed board height to let it grow with your content */
+    }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #fce4ec;
-            margin: 0;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-        }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #fce4ec;
+        margin: 20px; /* Added margin so it doesn't touch the screen edges */
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
 
-        /* The Main Board Section */
-        .profile-section {
-            width: var(--board-width);
-            height: var(--board-height);
-            background-image: urD30DB3E4-A7DE-4BD2-945B-4890AF691A5A.webp&width=746&height=746
-            background-size: cover;
-            position: relative;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-        }
+    .profile-section {
+        width: var(--board-width);
+        /* Fix: Proper url syntax and added min-height */
+        background-image: url('D30DB3E4-A7DE-4BD2-945B-4890AF691A5A.webp'); 
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0; /* Padding at top and bottom */
+    }
 
-        /* Profile Area */
-        .pfp-container {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            z-index: 5;
-        }
+    .content-box {
+        width: 350px;
+        min-height: 100px; /* Grow with text */
+        background: rgba(255, 255, 255, 0.9); /* Slightly transparent white looks cute */
+        border: 2px solid #000;
+        border-radius: 15px;
+        margin: 25px 0;
+        position: relative;
+        z-index: 3;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 1.4;
+        word-wrap: break-word; /* Prevents text from breaking the box */
+    }
 
-        .pfp-frame {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url('Untitled124_20260426065433.webp'); /* Your lace frame */
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 2;
-        }
+    /* Sticker Fixes */
+    .sticker {
+        position: absolute;
+        pointer-events: none;
+        z-index: 10;
+    }
 
-        .pfp-circle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            background-color: #ccc;
-            border-radius: 50%;
-            z-index: 1;
-            overflow: hidden;
-        }
+    /* Bottom stickers need to stay relative to the box they belong to */
+    .content-box .sticker {
+        position: absolute;
+    }
 
-        /* Text Boxes */
-        .content-box {
-            width: 350px;
-            height: 100px;
-            background: white;
-            border: 2px solid #000;
-            border-radius: 15px;
-            margin: 15px 0;
-            position: relative;
-            z-index: 3;
-            padding: 10px;
-        }
-
+    /* ... keep your other sticker classes (snoopy, chiikawa, etc.) the same ... */
         /* Sticker Placement Protocol */
         .sticker {
             position: absolute;
