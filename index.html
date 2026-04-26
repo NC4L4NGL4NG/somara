@@ -14,7 +14,10 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #fce4ec;
+            /* Added a cute sparkly background for the outside */
+            background-image: url('https://i.pinimg.com/originals/13/4e/6e/134e6e6651918343360667e411425164.gif');
+            background-size: cover;
+            background-attachment: fixed;
             margin: 20px;
             font-family: 'Comic Sans MS', cursive, sans-serif;
         }
@@ -22,27 +25,29 @@
         /* The Main Board Section */
         .profile-section {
             width: var(--board-width);
-            /* Fixed: Added url() and quotes */
             background-image: url('D30DB3E4-A7DE-4BD2-945B-4890AF691A5A.webp'); 
             background-size: cover;
             background-position: center;
             position: relative;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 0; /* More padding for top stickers */
+            padding: 40px 0;
+            border: 4px solid #fff; /* Added a white border to make it pop */
         }
 
         /* Fixed PFP Container Styles */
-
-  .pfp-container {
+        .pfp-container {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 180px; /* Sized to fit the lace frame sticker */
+            height: 180px;
             z-index: 5;
             margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .pfp-frame {
@@ -52,25 +57,23 @@
             background-image: url('Untitled124_20260426065433.webp');
             background-size: contain;
             background-repeat: no-repeat;
+            background-position: center;
             z-index: 2;
         }
 
         .pfp-circle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            background-color: #ccc;
+            width: 110px; /* Adjusted to fit inside the lace hole */
+            height: 110px;
+            background-color: #ffffff; /* Pure white as requested */
             border-radius: 50%;
             z-index: 1;
             overflow: hidden;
+            border: 2px solid #fce4ec;
         }
         
         .content-box {
             width: 350px;
-            min-height: 100px; /* Changed to min-height so it grows */
+            min-height: 100px;
             background: rgba(255, 255, 255, 0.9);
             border: 2px solid #000;
             border-radius: 15px;
@@ -123,7 +126,7 @@
         <div class="pfp-container">
             <div class="pfp-frame"></div>
             <div class="pfp-circle">
-                <img src="E4758EAC-C9B3-4AB1-B1BF-B32F1D7149B2.webp" style="width:100%; height:100%; object-fit:cover;">
+                <img src="" style="width:100%; height:100%; object-fit:cover;">
             </div>
         </div>
 
