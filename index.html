@@ -4,88 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sticker Profile Board</title>
-   <style>
-    :root {
-        --board-width: 500px;
-        /* Removed fixed board height to let it grow with your content */
-    }
+    <style>
+        :root {
+            --board-width: 500px;
+        }
 
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background-color: #fce4ec;
-        margin: 20px; /* Added margin so it doesn't touch the screen edges */
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-    }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fce4ec;
+            margin: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
 
-    .profile-section {
-        width: var(--board-width);
-        /* Fix: Proper url syntax and added min-height */
-        background-image: url('D30DB3E4-A7DE-4BD2-945B-4890AF691A5A.webp'); 
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0; /* Padding at top and bottom */
-    }
+        /* The Main Board Section */
+        .profile-section {
+            width: var(--board-width);
+            /* Fixed: Added url() and quotes */
+            background-image: url('D30DB3E4-A7DE-4BD2-945B-4890AF691A5A.webp'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0; /* More padding for top stickers */
+        }
 
-    .content-box {
-        width: 350px;
-        min-height: 100px; /* Grow with text */
-        background: rgba(255, 255, 255, 0.9); /* Slightly transparent white looks cute */
-        border: 2px solid #000;
-        border-radius: 15px;
-        margin: 25px 0;
-        position: relative;
-        z-index: 3;
-        padding: 15px;
-        font-size: 14px;
-        line-height: 1.4;
-        word-wrap: break-word; /* Prevents text from breaking the box */
-    }
+        /* Fixed PFP Container Styles */
+        .pfp-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            z-index: 5;
+            margin-bottom: 10px;
+        }
 
-    /* Sticker Fixes */
-    .sticker {
-        position: absolute;
-        pointer-events: none;
-        z-index: 10;
-    }
+        .pfp-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('Untitled124_20260426065433.webp');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
 
-    /* Bottom stickers need to stay relative to the box they belong to */
-    .content-box .sticker {
-        position: absolute;
-    }
+        .pfp-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border-radius: 50%;
+            z-index: 1;
+            overflow: hidden;
+        }
 
+        .content-box {
+            width: 350px;
+            min-height: 100px; /* Changed to min-height so it grows */
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #000;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            z-index: 3;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.4;
+            word-wrap: break-word;
+            color: #333;
+        }
+
+        /* Sticker Logic */
         .sticker {
             position: absolute;
-            pointer-events: none; /* Keeps them from blocking clicks */
+            pointer-events: none;
             z-index: 10;
         }
 
+        /* Top background stickers */
         .snoopy { top: 10px; left: 10px; width: 100px; }
         .chiikawa { top: 10px; right: 20px; width: 60px; }
         .bunnies-top { top: 100px; right: 5px; width: 80px; }
         
-        /* Middle Stickers (overlapping boxes) */
-        .bunny-plush { bottom: -10px; left: -30px; width: 80px; }
-        .scout-pixel { bottom: -5px; right: -10px; width: 70px; }
-        
-        /* Bottom Stickers */
-        .cat-plush { bottom: -10px; left: -25px; width: 80px; }
-        .scout-chibi { bottom: -10px; right: -10px; width: 80px; }
+        /* Stickers overlapping the boxes */
+        .bunny-plush { bottom: -15px; left: -35px; width: 90px; }
+        .scout-pixel { bottom: -10px; right: -15px; width: 80px; }
+        .cat-plush { bottom: -15px; left: -30px; width: 90px; }
+        .scout-chibi { bottom: -15px; right: -15px; width: 90px; }
 
         .bread-icon {
             position: absolute;
-            top: -15px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
+            width: 50px;
+            z-index: 11;
         }
 
     </style>
@@ -108,7 +130,9 @@
             <img src="EACF7392-D565-42E5-80BE-018D32593000.webp" class="bread-icon">
             <img src="7139EDF8-46E3-403D-A01F-38E94C77AFED.webp" class="sticker bunny-plush">
             <img src="Untitled128_20260426064435.webp" class="sticker scout-pixel">
-            <div class="text-content">Hello! My name is Somara aka scoutswifeforever, You may already know me as someone who does the posing tf2 videos but theres alot of stuff I haven't stated about myself that I wanted to share through this info page! Anyways, My name is Somara, My age is i rather hide, I am from the Philippines, and I am into the mcbling and cutecore aesthetic. People calls me a larper alot even though i DO play tf2 and i've known tf2 when i was a kid so it doesn't make me any less of a larper if i already knew it to begin with. Yes, i am a sharing yumesshipper and secondly, I will happily give my lovely yumeshippers fanart!</div>
+            <div class="text-content">
+                Hello! My name is Somara aka scoutswifeforever, You may already know me as someone who does the posing tf2 videos but theres alot of stuff I haven't stated about myself that I wanted to share through this info page! Anyways, My name is Somara, My age is i rather hide, I am from the Philippines, and I am into the mcbling and cutecore aesthetic. People calls me a larper alot even though i DO play tf2 and i've known tf2 when i was a kid so it doesn't make me any less of a larper if i already knew it to begin with. Yes, i am a sharing yumesshipper and secondly, I will happily give my lovely yumeshippers fanart!
+            </div>
         </div>
 
         <div class="content-box">
